@@ -1,17 +1,26 @@
-import React from 'react';
+import React, {useLayoutEffect} from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import HomeScreen from '../screens/HomeScreen';
 import SearchScreen from '../screens/SearchScreen';
 import {Icon} from '@rneui/themed';
+import {useNavigation} from '@react-navigation/native';
 
-export type BottomTabStackParamList = {
+export type TabStackParamList = {
   Home: undefined;
   Search: undefined;
 };
 
-const BottomTab = createBottomTabNavigator<BottomTabStackParamList>();
+const BottomTab = createBottomTabNavigator<TabStackParamList>();
 
 const BottomTabNavigator = () => {
+  const navigation = useNavigation();
+
+  useLayoutEffect(() => {
+    navigation.setOptions({
+      headerShown: false,
+    });
+  }, [navigation]);
+
   return (
     <BottomTab.Navigator
       screenOptions={({route}) => ({
@@ -22,7 +31,7 @@ const BottomTabNavigator = () => {
             return (
               <Icon
                 name="home"
-                type="antdesign"
+                type="font-awesome"
                 color={focused ? '#59c1cc' : 'gray'}
               />
             );
@@ -30,7 +39,7 @@ const BottomTabNavigator = () => {
             return (
               <Icon
                 name="search"
-                type="antdesign"
+                type="font-awesome"
                 color={focused ? '#EB6A7c' : 'gray'}
               />
             );

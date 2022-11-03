@@ -1,11 +1,19 @@
-import {StyleSheet, Text, View} from 'react-native';
-import React from 'react';
+import {SafeAreaView, StyleSheet, Text, View} from 'react-native';
+import React, {useLayoutEffect} from 'react';
+import {useNavigation} from '@react-navigation/native';
 
 const SearchScreen = () => {
+  const navigation = useNavigation();
+
+  useLayoutEffect(() => {
+    navigation.setOptions({
+      headerShown: false,
+    });
+  }, [navigation]);
   return (
-    <View>
+    <SafeAreaView>
       <Text>SearchScreen</Text>
-    </View>
+    </SafeAreaView>
   );
 };
 
