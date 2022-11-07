@@ -1,6 +1,7 @@
-import {StyleSheet, Text, ScrollView, SafeAreaView} from 'react-native';
+import {Text, ScrollView, SafeAreaView} from 'react-native';
 import React, {useLayoutEffect} from 'react';
 import {useNavigation} from '@react-navigation/native';
+import MovieList from '../components/MovieList';
 
 const HomeScreen = () => {
   const navigation = useNavigation();
@@ -14,6 +15,7 @@ const HomeScreen = () => {
     <SafeAreaView>
       <ScrollView>
         <Text>HomeScreen</Text>
+        <MovieList />
       </ScrollView>
     </SafeAreaView>
   );
